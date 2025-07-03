@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KanBan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="output.css"/>
+</head>
+<body class="pt-4">
+    <div class="p-4 mt-2 mx-4">
+        <div class="flex py-3 my-5 items-center justify-between">
+            <h1 class="text-[#451d48] font-semibold text-3xl ">KanBan Dashboard</h1>
+            <div class="flex flex-wrap gap-2">
+                <input class="entry-field p-2 border rounded w-full sm:w-auto flex-1 min-w-[200px]" type="text" placeholder="enter a new task"/>
+                <button class="text-white bg-blue-400 hover:bg-blue-800 text-xl rounded-full w-10 h-10 flex items-center justify-center" title="Add Task" onclick="addTask(event)">+</button>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-4 min-h-[80vh] mb-5 ">
+            <div class="column flex-1 bg-blue-200 rounded-lg p-4 shadow-md"  data-column="todo">
+                <h2 class="text-lg font-semibold">ToDo</h2>
+                <div class="task-list"></div>
+            </div>
+            <div class="column flex-1 bg-purple-100 rounded-lg p-4 shadow-md" data-column="inProgress">
+                <h2 class="text-lg font-semibold">InProgress</h2>
+                <div class="task-list"></div>
+            </div>
+
+            <div class="column flex-1 bg-green-100 rounded-lg p-4 shadow-md" data-column="done">
+                <h2 class="text-lg font-semibold">Done</h2>              
+                <div class="task-list"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

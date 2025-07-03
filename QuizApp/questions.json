@@ -1,0 +1,42 @@
+[
+  {
+    "question": "What does the 'this' keyword refer to in a regular function?",
+    "options": ["The global object", "The parent function", "The object calling the function", "undefined"],
+    "correct": "The object calling the function"
+  },
+  {
+    "question": "Which of these is NOT a JavaScript data type?",
+    "options": ["Number", "Boolean", "Character", "Undefined"],
+    "correct": "Character"
+  },
+  {
+    "question": "What is the output of: typeof NaN?",
+    "options": ["'NaN'", "'undefined'", "'number'", "'object'"],
+    "correct": "'number'"
+  },
+  {
+    "question": "How can you create an object in JavaScript?",
+    "options": ["let obj = {}", "let obj = new Object()", "Both A and B", "None of the above"],
+    "correct": "Both A and B"
+  },
+  {
+    "question": "What does '===' operator check in JavaScript?",
+    "options": ["Only value", "Only type", "Both value and type", "None of the above"],
+    "correct": "Both value and type"
+  },
+  {
+    "question": "What is the purpose of promises in JavaScript?",
+    "options": ["To handle errors", "To write synchronous code", "To handle asynchronous operations", "To create variables"],
+    "correct": "To handle asynchronous operations"
+  },
+  {
+    "question": "Which keyword is used to declare a constant variable in JavaScript?",
+    "options": ["let", "var", "const", "define"],
+    "correct": "const"
+  },
+  {
+    "question": "What will `Array.isArray([])` return?",
+    "options": ["true", "false", "undefined", "TypeError"],
+    "correct": "true"
+  }
+]
