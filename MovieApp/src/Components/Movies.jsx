@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchMovies } from "./apiservice";
+import { fetchMovies } from "../apiservice";
 import MovieCard from "./MovieCard"
 
 const Movies = () => { 
