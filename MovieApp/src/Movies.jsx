@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { fetchMovies } from "./apiservice";
 const Movies = () => { 
     const [movies, setMovies] = useState([]); 
+    const [hasLiked,setHasLiked]=useState(false);
     useEffect(() => { 
         const fetchMoviesData = async () => { 
             const moviesData = await fetchMovies(); 
             setMovies(moviesData); 
         }; 
-        
         fetchMoviesData(); 
     }, []); 
 
@@ -23,6 +23,9 @@ const Movies = () => {
                     <div key={movie.id} className="border rounded-lg p-4"> 
                         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="w-full mb-4 rounded"/>
                         <h2>{movie.title}</h2> 
+                        <button onClick={() =>setHasLiked(!hasLiked)}>
+                            {hasLiked ? "❤️": "🤍"}
+                        </button>
                         
                         
                     </div> 
