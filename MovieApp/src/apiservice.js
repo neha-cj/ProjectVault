@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_KEY = "93a8f5c0c458da302c5e97c41a368ea3";
+const API_KEY = import.meta.env.VITE_API_KEY;
 const apiService = axios.create({ baseURL: "https://api.themoviedb.org/3/",});
 export const fetchMovies = async () => { 
     try { 
