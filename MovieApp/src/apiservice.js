@@ -13,4 +13,10 @@ export const fetchMovies = async () => {
         return []; 
     }
 };
+export const searchMovies = async(query)=>{
+    const res = await apiService.get('search/movie',{
+        params: {api_key:API_KEY}
+    })
+    return res.data.results;
+}
 
