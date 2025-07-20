@@ -20,7 +20,11 @@ function App() {
 
   const [searchTerm, setSearchTerm] =useState('')
   
-
+  const handleSearch = async(query) => {
+    const results = await searchMovies(query);
+    setMovies(results)
+  }
+  
   return (
     <div className="bg-black">
       <div className="flex justify-between p-2">
@@ -29,7 +33,7 @@ function App() {
                 <img className="mt-2 px-3 py-3" src="search.svg" alt="search"/>
                 <input className="mt-2 px-3 py-3 max-h-[3rem] rounded" type="text" placeholder="Search" value={searchTerm} onChange={(e) =>setSearchTerm(e.target.value)} 
                     onKeyDown={(e)=> {if (e.key==='Enter' && searchTerm){
-                      searchMovies(searchTerm)}}
+                      handleSearch(searchTerm)}}
                     }
                 />
             </div>
@@ -40,7 +44,7 @@ function App() {
       <div className="text-white p-3"> 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {movies.map((movie) => ( 
-                    <MovieCard /*key={movie.id}*/ movie={movie} />
+                    <MovieCard key={movie.id} movie={movie} />
                 ))}            
             </div>                                                                                                                                          
         </div> 
