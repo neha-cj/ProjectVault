@@ -52,11 +52,11 @@ function App() {
   
   return (
     <div className="bg-black">
-      <div className="flex justify-between p-2">
+      <div className="flex justify-between p-3">
         <h1 className="text-3xl p-3 font-bold text-purple-500">Boxed</h1> 
             <div className="flex ">
                 <img className="mt-2 px-3 py-3" src="search.svg" alt="search"/>
-                <input className="mt-2 px-3 py-3 max-h-[3rem] rounded" type="text" placeholder="Search" value={searchTerm} onChange={(e) =>setSearchTerm(e.target.value)}/>
+                <input className="mt-2 px-3 py-3 max-h-[3rem] rounded mr-3" type="text" placeholder="Search" value={searchTerm} onChange={(e) =>setSearchTerm(e.target.value)}/>
             </div>
       </div>
       <div>
