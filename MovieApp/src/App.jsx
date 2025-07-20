@@ -3,12 +3,18 @@ import { useEffect, useState } from "react";
 import MovieCard from "./Components/MovieCard"
 
 function App() {
+  const[loading, setLoading]=useState(false);
+
+
   const [movies, setMovies] = useState([]);
 
   useEffect(()=>{
     const fetchMoviesData= async() =>{
+        setLoading(true)
+
         const data= await fetchMovies()
         setMovies(data);
+        setLoading(false)
     }
     fetchMoviesData();
   },[])
@@ -29,6 +35,7 @@ function App() {
   //when change in debouncedterm
   useEffect(()=>{
     const search = async() =>{
+      setLoading(true)
       console.log("searching ", debouncedTerm);
       if(debouncedTerm === ''){
         const data = await fetchMovies();
@@ -38,6 +45,7 @@ function App() {
         const results = await searchMovies(debouncedTerm)
         setMovies(results);
       }
+      setLoading(false)
     }
     search();
   },[debouncedTerm]);
@@ -51,16 +59,22 @@ function App() {
                 <input className="mt-2 px-3 py-3 max-h-[3rem] rounded" type="text" placeholder="Search" value={searchTerm} onChange={(e) =>setSearchTerm(e.target.value)}/>
             </div>
       </div>
-      <div className="get">
-
-      </div>
-      <div className="text-white p-3"> 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div>
+          {loading? (
+            <div className="flex justify-center items-center h-64"> 
+              <div className="w-12 h-12 border-purple-200 border-4 border-dashed border-t-transparent rounded-full animate-spin"> </div>
+            </div>
+          ):
+          (
+            <div className="text-white p-3"> 
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {movies.map((movie) => ( 
                     <MovieCard key={movie.id} movie={movie} />
                 ))}            
-            </div>                                                                                                                                          
-        </div> 
+              </div>                                                                                                                                          
+            </div> 
+          )}
+      </div>
     </div>
   )
 }
