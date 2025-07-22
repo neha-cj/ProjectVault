@@ -19,4 +19,3 @@ export const searchMovies = async(query)=>{
     })
     return res.data.results;
 }
-
