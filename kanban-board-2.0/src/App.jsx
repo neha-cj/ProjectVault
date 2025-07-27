@@ -26,6 +26,11 @@ function App() {
     }
     
   }
+  function deleteTask(id) {
+  const updated = tasks.filter(task => task.id !== id);
+  setTasks(updated);
+}
+
   useEffect(()=>{
     localStorage.setItem('myStoredArray', JSON.stringify(tasks))
   },[tasks])
@@ -77,7 +82,7 @@ function App() {
           <h2 className='font-semibold text-2xl p-2 m-2'>ToDo</h2>
           <div className="min-h-full min-w-full"  id="todo" onDragOver={(e) => e.preventDefault()} onDragEnter={dragEnter} onDrop={drop}>
               {tasks.filter(task => task.column === "todo").map(task => (
-                <Item key={task.id} task={task} onDragStart={(e) => dragStart(e, task)}/>
+                <Item key={task.id} task={task} onDragStart={(e) => dragStart(e, task)} onDelete={deleteTask}/>
               ))}
           </div>
         </div>

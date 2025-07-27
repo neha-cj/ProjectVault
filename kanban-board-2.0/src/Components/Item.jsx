@@ -1,11 +1,10 @@
 import React from "react";
 
-function Item({task, onDragStart}){
-    
-    
+function Item({task, onDragStart, onDelete}){
     return(
-        <div>
-            <p className="p-1 m-2 border rounded shadow-lg bg-white " draggable onDragStart={(e)=>onDragStart(e,task)}>  {task.text}</p>
+        <div className="flex justify-between bg-white m-2 border rounded shadow-lg">
+            <p className="p-1 " draggable onDragStart={(e)=>onDragStart(e,task)}>  {task.text}</p>
+            <button className="text-black hover:text-red-800 p-1 " onClick={()=>onDelete(task.id)} ><i className="fas fa-trash"></i></button>
         </div>
     )
 }
