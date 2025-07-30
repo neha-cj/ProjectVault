@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ProductList from './Components/ProductList'
 
 
 function App() {
@@ -6,18 +7,10 @@ function App() {
 
   return (
     <>
-      <h1 className='text-blue-300'>PLP</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className='min-h-screen flex flex-col m-2 p-3 justify-center items-center'>
+        <h1 className='text-2xl'>GENEV</h1>
+        <ProductList />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
