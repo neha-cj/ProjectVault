@@ -1,16 +1,23 @@
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import ProductList from './Components/ProductList'
-
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Login from './Pages/Login'
+import Navbar from './Components/Navbar'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div className='min-h-screen flex flex-col m-2 p-3 justify-center items-center'>
-        <h1 className='text-2xl'>GENEV</h1>
-        <ProductList />
-      </div>
+    <> 
+      <BrowserRouter>
+        <div>
+          <Navbar />
+          <Routes>
+            <Route path="/login" element ={<Login />} />
+            <Route path="/home" element={<ProductList />} />
+          </Routes> 
+        </div>
+      </BrowserRouter>
     </>
   )
 }

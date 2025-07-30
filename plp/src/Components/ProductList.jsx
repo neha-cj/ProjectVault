@@ -13,19 +13,20 @@ function ProductList() {
           });
     }, []);
     return (
-        <div>
-          <ul className='grid grid-cols-3 '>
-            {products.map(product => (
-              <li className='border p-2 m-3' key={product.id}>
-                <img src={product.image} alt={product.title} className='w-48 h-60'/>
-                <h2>{product.title}</h2>
-                <p>Price: ${product.price}</p>
-                <p>Rating: {product.rating.rate}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      );
+  <div>
+    <ul className='grid grid-cols-3 gap-6'>
+      {products.map(product => (
+        <li className='p-4 text-center' key={product.id}>
+          <img src={product.image} alt={product.title} className='w-48 h-60 '/>
+          <h2 className="text-lg font-semibold mt-2">{product.title}</h2>
+          <p className="text-gray-700">Price: ${product.price}</p>
+          <p className="text-yellow-600">⭐ {product.rating?.rate}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
     }
 
 export default ProductList;
