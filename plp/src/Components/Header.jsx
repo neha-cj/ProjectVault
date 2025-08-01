@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function Header({onSearchChange}) {
+function Header({onSearchChange, onCategoryChange}) {
     const [inputVal, setInputVal]=useState('')
 
     useEffect(() => {
@@ -23,8 +23,8 @@ function Header({onSearchChange}) {
                     </div>
                 </div>
                 <nav className='flex justify-center space-x-4 p-2'>
-                    <a href="/" className='text-blue-800 hover:text-blue-600'>Mens</a>
-                    <a href="/" className='text-blue-800 hover:text-blue-600'>Womens</a>
+                    <button  className='text-blue-800 hover:text-blue-600' onClick={()=> onCategoryChange('men\'s clothing')}>Mens</button>
+                    <button className='text-blue-800 hover:text-blue-600' onClick={()=> onCategoryChange(`women's clothing`)}>Womens</button>
                 </nav>
             </div>
         </>

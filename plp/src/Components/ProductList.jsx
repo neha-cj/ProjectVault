@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-function ProductList({searchTerm}) {
+function ProductList({searchTerm, category}) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://fakestoreapi.com/products`)
+        const baseURl= 'https://fakestoreapi.com/products'
+        const url = category ? `${baseURl}/category/${category}` : baseURl;
+        axios.get(url)
           .then(response => {
             setProducts(response.data);
           })
           .catch(error => {
             console.error('Error fetching products:', error);
           });
-    }, []);
+    }, [category]);
 
     const filteredproducts = products.filter(product => 
         product.title.toLowerCase().includes(searchTerm.toLowerCase())
