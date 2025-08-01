@@ -8,7 +8,6 @@ function App(){
   return (
     <> 
       <Header />
-      <div>Hello</div>
       <ProductList />
     </>
   )
