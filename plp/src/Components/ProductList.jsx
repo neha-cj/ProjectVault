@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-function ProductList() {
+function ProductList({searchTerm}) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -13,10 +13,14 @@ function ProductList() {
           });
     }, []);
 
+    const filteredproducts = products.filter(product => 
+        product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
       <div>
         <ul className='grid grid-cols-3 gap-6'>
-          {products.map(product => (
+          {filteredproducts.map(product => (
           <li className='p-4 ' key={product.id}>
             <img src={product.image} alt={product.title} className='w-48 h-60 '/>
             <h2 className="text-lg font-semibold mt-2">{product.title}</h2>
