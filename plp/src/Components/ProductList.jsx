@@ -28,7 +28,7 @@ function ProductList({searchTerm, category, onAddToCart}) {
             <h2 className="text-lg font-semibold mt-2">{product.title}</h2>
             <p className="text-gray-700">Price: ${product.price}</p>
             <p className="text-yellow-600">Rating: {product.rating?.rate}</p>
-            <button className="bg-blue-500 text-white px-4 py-1 mt-2 rounded hover:bg-blue-600"
+            <button className="bg-blue-900 text-white px-4 py-1 mt-2 rounded hover:bg-blue-600"
               onClick={() => onAddToCart(product)}
             >
               Add to Cart
