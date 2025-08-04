@@ -29,8 +29,11 @@ function App(){
   return (
     <> 
       <Header onSearchChange={setSearchTerm} onCategoryChange={setCategory} cartCount={cartItems.reduce((acc, item) => acc + item.quantity, 0)} onCartClick={() => setIsCartOpen(!isCartOpen)} />
-      <ProductList searchTerm={searchTerm} category={category} onAddToCart={handleAddToCart} />
-      {isCartOpen && <Cart cartItems={cartItems} deleteFromCart={handleDeleteFromCart} setCartItems={setCartItems} />}
+      
+      {isCartOpen ? 
+        (<Cart cartItems={cartItems} deleteFromCart={handleDeleteFromCart} setCartItems={setCartItems} goBack={() => setIsCartOpen(false)}/>):
+        (<ProductList searchTerm={searchTerm} category={category} onAddToCart={handleAddToCart}/>)
+      }
     </>
   )
 }

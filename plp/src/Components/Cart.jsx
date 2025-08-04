@@ -1,9 +1,10 @@
 import React from "react"
-function Cart({cartItems,deleteFromCart,setCartItems}){
+function Cart({cartItems,deleteFromCart,setCartItems, goBack}){
 
     return(
         <>
-            <div>
+            <div className="p-2">
+                <button onClick={goBack} className="mb-4 bg-blue-900 text-white rounded p-2">← Go Back</button>
                 <h2>My Cart</h2>{cartItems.length === 0?(<p>Your Cart is Empty</p>):
                 (
                     <div>
