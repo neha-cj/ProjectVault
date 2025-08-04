@@ -25,13 +25,25 @@ function App(){
     const updatedCart= cartItems.filter(item=>item.id !== product.id);
     setCartItems(updatedCart)
   }
+  const handleIncrement =(productId) => {
+    setCartItems(prevCart =>
+      prevCart.map(item =>item.id === productId ? { ...item, quantity: item.quantity + 1 } : item)
+    );
+  };
+  const handleDecrement =(productId) => {
+    setCartItems(prevCart =>
+      prevCart.map(item => item.id === productId ? { ...item, quantity: item.quantity - 1 } : item)
+      .filter(item => item.quantity > 0)
+    );
+  };
+
 
   return (
     <> 
       <Header onSearchChange={setSearchTerm} onCategoryChange={setCategory} cartCount={cartItems.reduce((acc, item) => acc + item.quantity, 0)} onCartClick={() => setIsCartOpen(!isCartOpen)} />
       
       {isCartOpen ? 
-        (<Cart cartItems={cartItems} deleteFromCart={handleDeleteFromCart} setCartItems={setCartItems} goBack={() => setIsCartOpen(false)}/>):
+        (<Cart cartItems={cartItems} goBack={() => setIsCartOpen(false)} increment={handleIncrement} decrement={handleDecrement} />):
         (<ProductList searchTerm={searchTerm} category={category} onAddToCart={handleAddToCart}/>)
       }
     </>

@@ -1,34 +1,43 @@
 import React from "react"
 import emptycart from '../assets/empty.jpg';
-function Cart({cartItems,deleteFromCart,setCartItems, goBack}){
-
+function Cart({cartItems,goBack, increment, decrement}){
+    const totalCart= cartItems.reduce((sum,item) => sum+item.price*item.quantity,0);
     return(
+        
         <>
             <div className="p-2 flex flex-col justify-center items-center">
                 <button onClick={goBack} className="mb-4 bg-blue-900 text-white rounded p-2">← Go Back</button>
-                <h2>My Cart</h2>{cartItems.length === 0?(
+                <h2 className="text-xl font-semibold p-2 text-gray-600">My Cart</h2>{cartItems.length === 0?(
                     <>
-                        <img src={emptycart} alt='empty-cart'></img>
-                        <p className="text-2xl">Your Cart is Empty</p>
+                        <p className="text-2xl font-bold text-blue-800">Your Cart is Empty</p>
+                        <img className="w-auto h-80" src={emptycart} alt='empty-cart'></img>
                     </>
                     ):
                     (
                     <div>
                         <ul>
                             {cartItems.map((item)=>(
-                                <li key={item.id}> 
-                                    <img src={item.image} alt={item.title} className="w-16 h-20 object-contain" />
-                                    <h2 className="text-lg font-semibold mt-2">{item.title}</h2>
-                                    <p className="text-gray-700">Price: ${item.price}</p>
-                                    <div className="m-2 w-[80px] border shadow bg-gray-200">
-                                        <button className="p-2">+</button>
-                                        <button onClick={deleteFromCart} className="p-2 cursor-pointer">-</button>
+                                <li className="p-4 border rounded shadow m-2 flex gap-3 items-center" key={item.id}> 
+                                    <div className="w-[300px] text-center"> 
+                                        <img src={item.image} alt={item.title} className="w-full h-40 object-contain" />
+                                        <h2 className="text-lg font-semibold mt-2">{item.title}</h2>
                                     </div>
-                                    
+                                    <p className="text-gray-700">Price: ${item.price}</p>
+                                    <div className="m-2 p-2 border shadow bg-gray-200 flex gap-2">
+                                        <button onClick={()=>increment(item.id)} >+</button>
+                                        <p>{item.quantity}</p>
+                                        <button onClick={()=>decrement(item.id)} >-</button>
+                                    </div>
+                                    <p>Total: ${(item.price * item.quantity)}</p>
                                 </li>
                             ))}
                         </ul>
+                        <div className="m-2 p-2 text-right">
+                            <p className="font-semibold">Total: ${totalCart} </p> 
+                            <button className="m-2 p-2 border shadow bg-blue-800 text-white rounded hover:bg-green-700">Checkout</button>
+                        </div>
                     </div>
+                    
                 )}
             </div>
         </>
