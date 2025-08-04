@@ -1,12 +1,18 @@
 import React from "react"
+import emptycart from '../assets/empty.jpg';
 function Cart({cartItems,deleteFromCart,setCartItems, goBack}){
 
     return(
         <>
-            <div className="p-2">
+            <div className="p-2 flex flex-col justify-center items-center">
                 <button onClick={goBack} className="mb-4 bg-blue-900 text-white rounded p-2">← Go Back</button>
-                <h2>My Cart</h2>{cartItems.length === 0?(<p>Your Cart is Empty</p>):
-                (
+                <h2>My Cart</h2>{cartItems.length === 0?(
+                    <>
+                        <img src={emptycart} alt='empty-cart'></img>
+                        <p className="text-2xl">Your Cart is Empty</p>
+                    </>
+                    ):
+                    (
                     <div>
                         <ul>
                             {cartItems.map((item)=>(
