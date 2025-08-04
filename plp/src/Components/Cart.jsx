@@ -1,6 +1,8 @@
-import React from "react"
 import emptycart from '../assets/empty.jpg';
-function Cart({cartItems,goBack, increment, decrement}){
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+function Cart({cartItems,goBack, increment, decrement, deleteItem}){
     const totalCart= cartItems.reduce((sum,item) => sum+item.price*item.quantity,0);
     return(
         
@@ -29,6 +31,9 @@ function Cart({cartItems,goBack, increment, decrement}){
                                         <button onClick={()=>decrement(item.id)} >-</button>
                                     </div>
                                     <p>Total: ${(item.price * item.quantity)}</p>
+                                    <button title="remove item" className='text-red-700' onClick={()=>deleteItem(item)}>
+                                        <FontAwesomeIcon icon={faTrashCan} /> 
+                                    </button>
                                 </li>
                             ))}
                         </ul>

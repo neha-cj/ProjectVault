@@ -43,7 +43,7 @@ function App(){
       <Header onSearchChange={setSearchTerm} onCategoryChange={setCategory} cartCount={cartItems.reduce((acc, item) => acc + item.quantity, 0)} onCartClick={() => setIsCartOpen(!isCartOpen)} />
       
       {isCartOpen ? 
-        (<Cart cartItems={cartItems} goBack={() => setIsCartOpen(false)} increment={handleIncrement} decrement={handleDecrement} />):
+        (<Cart cartItems={cartItems} goBack={() => setIsCartOpen(false)} increment={handleIncrement} decrement={handleDecrement} deleteItem={handleDeleteFromCart}/>):
         (<ProductList searchTerm={searchTerm} category={category} onAddToCart={handleAddToCart}/>)
       }
     </>
