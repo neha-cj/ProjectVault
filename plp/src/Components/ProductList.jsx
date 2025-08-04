@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import axios from 'axios';
-function ProductList({searchTerm, category}) {
+function ProductList({searchTerm, category, onAddToCart}) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
