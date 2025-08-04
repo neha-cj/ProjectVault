@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductList from './Components/ProductList'
 import Header from './Components/Header'
 import Cart from './Components/Cart'
@@ -9,6 +9,17 @@ function App(){
   const [category,setCategory] = useState('');
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  useEffect(()=>{
+    const stored=localStorage.getItem('cart')
+    console.log("Loaded cart-", stored);
+    if(stored){
+      setCartItems(JSON.parse(stored))
+    }
+  },[]);
+  useEffect(()=>{
+    localStorage.setItem('cart',JSON.stringify(cartItems))
+  },[cartItems]);
 
   const handleAddToCart = (product) => {
     setCartItems((prevCart) => {
