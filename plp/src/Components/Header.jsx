@@ -21,7 +21,7 @@ function Header({ onSearchChange, onCategoryChange, cartCount, onCartClick }) {
             <div className="absolute right-0 mr-4 flex items-center gap-4">
                 <input placeholder='Search for products' type="text" className='border border-gray-300 rounded p-2 ml-4' value={inputVal} onChange={(e)=> setInputVal(e.target.value)} /> 
                 <div className="relative">
-                    <button onClick={onCartClick}><FontAwesomeIcon icon={faCartShopping} /> </button>
+                    <button title='your cart' onClick={onCartClick}><FontAwesomeIcon icon={faCartShopping} /> </button>
                     {cartCount > 0 && (
                         <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">{cartCount}</span>
                     )}

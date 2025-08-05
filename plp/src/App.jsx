@@ -7,7 +7,10 @@ import Cart from './Components/Cart'
 function App(){ 
   const [searchTerm, setSearchTerm] = useState('');
   const [category,setCategory] = useState('');
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() =>{
+    const stored = localStorage.getItem('cart');
+    return stored ? JSON.parse(stored) : [];
+  });
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(()=>{
@@ -19,6 +22,7 @@ function App(){
   },[]);
   useEffect(()=>{
     localStorage.setItem('cart',JSON.stringify(cartItems))
+    console.log("Cart from localstorgae-", cartItems);
   },[cartItems]);
 
   const handleAddToCart = (product) => {
