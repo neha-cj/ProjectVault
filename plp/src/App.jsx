@@ -14,13 +14,6 @@ function App(){
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(()=>{
-    const stored=localStorage.getItem('cart')
-    console.log("Loaded cart-", stored);
-    if(stored){
-      setCartItems(JSON.parse(stored))
-    }
-  },[]);
-  useEffect(()=>{
     localStorage.setItem('cart',JSON.stringify(cartItems))
     console.log("Cart from localstorgae-", cartItems);
   },[cartItems]);
